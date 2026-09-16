@@ -101,6 +101,17 @@
     scroller.addEventListener('click', (e) => { if (moved) { e.preventDefault(); moved = 0; } }, true);
   }
 
+  /* ---------- galerie: Bilder vorladen, sobald die Sektion in die Nähe kommt (sonst ruckelt das seitliche Scrollen) ---------- */
+  const gal = $('.gal');
+  if (gal && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      $$('img[loading="lazy"]', gal).forEach((img) => { img.loading = 'eager'; img.decoding = 'async'; });
+      io.disconnect();
+    }, { rootMargin: '150% 0px' });
+    io.observe(gal);
+  }
+
   /* ---------- händlersuche (Filter im DOM, ohne Backend) ---------- */
   const finder = $('#finder');
   if (finder) {
