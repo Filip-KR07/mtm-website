@@ -10,7 +10,7 @@ breite Archivo-Versalien, Radius 0 – Orientierung lamborghini.com (siehe `DESI
 ```
 index.html          Onepager: Hero-Slider · Angebot (12 Kacheln) · Intro · Stage 1 · Technik (M-Cantronic) · Ablauf · Fahrzeuge (Galerie) · Über MTM · Marken · FAQ · Kontakt
 style.css           alle Styles, Tokens in :root ganz oben
-main.js             Nav, Vollbild-Menü, Hero-Slider, Drag-Scroller, Formular (mailto), FAQ (WAAPI), GSAP-Reveals/Zähler/Parallax
+main.js             Nav (mit Topbar, klappt beim Scrollen zu), Vollbild-Menü, Hero-Slider, Drag-Scroller, Formular (mailto), FAQ (WAAPI), GSAP-Reveals/Zähler/Parallax
 impressum.html      eigenständig, ohne JS
 datenschutz.html    eigenständig, ohne JS
 assets/img          Fotos (aus Kunden/MTM, umbenannt, JPEG q88)
@@ -61,3 +61,6 @@ Vor dem ersten Deploy `https://DOMAIN/` in `index.html`, `impressum.html`,
 - `prefers-reduced-motion`: keine Animationen, Zähler zeigen sofort den Endwert.
 - Menü ist immer ein Vollbild-Overlay (auch Desktop), Kacheln laufen im horizontalen Scroller.
 - Alle Fotos liegen nur mit 500 px Höhe vor – Vollbild-Sektionen kaschieren das mit Verläufen und `saturate(.85)`. Höher aufgelöste Fotos bringen hier am meisten.
+- [ ] Topbar-Links Händler / Presse / Newsletter zeigen vorerst auf mtm-online.de – durch eigene Seiten ersetzen, sobald vorhanden. EN-Schalter ebenfalls.
+- [ ] Social-Profile (facebook.com/motorentechnikmayer, instagram.com/mtmcars, youtube.com/user/mtmgmbh) mit MTM bestätigen.
+- [ ] Hero-Slide 1 (Pangaea GT) nutzt ein Pressefoto von auto-motor-und-sport.de – Rechte klären oder MTM-Original einsetzen.

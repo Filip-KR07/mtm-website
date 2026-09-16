@@ -194,7 +194,7 @@ body.menu-open{overflow:hidden}
 .offer__head{display:flex;align-items:baseline;gap:32px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,40px)}
 .offer__head .label{margin:0}
 .offer__head h2{font-size:clamp(22px,2.4vw,34px)}
-.ptiles{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ptiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .ptile{
   position:relative;display:flex;flex-direction:column;min-height:100%;
   background:var(--bg-2);color:var(--ink);
@@ -213,7 +213,7 @@ body.menu-open{overflow:hidden}
   position:relative;display:flex;flex-direction:column;gap:3px;padding:12px 40px 16px 14px;margin-top:auto;
   border-top:1px solid var(--line);
 }
-.ptile__body strong{font-size:13px;font-weight:500;line-height:1.2;text-transform:uppercase;letter-spacing:.04em;font-variation-settings:'wdth' 112}
+.ptile__body strong{font-size:13px;font-weight:500;line-height:1.2;text-transform:uppercase;letter-spacing:.04em;font-variation-settings:'wdth' 112;overflow-wrap:anywhere;hyphens:auto}
 .ptile__body span{font-size:11.5px;line-height:1.35;color:var(--ink-3)}
 .ptile__arrow{
   position:absolute;right:14px;bottom:18px;width:16px;height:1px;background:currentColor;
@@ -226,9 +226,9 @@ body.menu-open{overflow:hidden}
   .ptile:hover .ptile__media img{transform:scale(1.05)}
   .ptile:hover .ptile__arrow{opacity:1;transform:translateX(4px)}
 }
-@media (max-width:1100px){.ptiles{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:1100px){.ptiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){
-  .ptiles{grid-template-columns:repeat(2,1fr)}
+  .ptiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ptile__body{padding:10px 34px 13px 12px}
   .ptile__body strong{font-size:12px}
   .ptile__body span{font-size:11px}
@@ -404,6 +404,48 @@ body.menu-open{overflow:hidden}
 .footer__nav,.footer__legal{display:flex;gap:22px;flex-wrap:wrap;color:var(--ink-3)}
 .footer__nav a,.footer__legal a{transition:color var(--dur)}
 @media (hover:hover){.footer__nav a:hover,.footer__legal a:hover{color:var(--ink)}}
+
+/* ---------- social ---------- */
+.social__list{list-style:none;margin:0;padding:0;display:flex;gap:8px}
+.social__list a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);color:var(--ink-2);transition:color var(--dur),border-color var(--dur),background var(--dur)}
+.social__list svg{width:18px;height:18px;fill:currentColor;transition:transform var(--dur) var(--ease-out)}
+.social__list a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover) and (pointer:fine){
+  .social__list a:hover{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+  .social__list a:hover svg{transform:scale(1.08)}
+}
+.social__list a:active{transform:scale(.96)}
+.social--menu{margin:28px 0 20px}
+.social--contact .label{display:block;margin-bottom:12px}
+.social--footer{order:3}
+.footer__inner .social__list{gap:6px}
+.footer__inner .social__list a{width:40px;height:40px}
+
+/* ---------- topbar (service-leiste über der nav) ---------- */
+.topbar{position:relative;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);border-bottom:1px solid var(--line);max-height:44px;overflow:hidden;transition:max-height .4s var(--ease-out),opacity .3s var(--ease-out)}
+.nav.is-scrolled .topbar{max-height:0;opacity:0;border-color:transparent}
+.topbar__inner{width:min(100% - 2*var(--gutter),var(--max));margin-inline:auto;height:44px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.topbar__contact,.topbar__links,.topbar__side,.topbar__lang{display:flex;align-items:center;gap:22px}
+.topbar__contact a{display:inline-flex;align-items:center;gap:8px;letter-spacing:.06em;text-transform:none;font-size:12.5px;color:var(--ink)}
+.topbar__contact svg{width:14px;height:14px;fill:currentColor;opacity:.7}
+.topbar__links a,.topbar__lang a{transition:color var(--dur)}
+.topbar__lang{gap:0;margin-left:6px;border:1px solid var(--line)}
+.topbar__lang > *{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 6px;font-size:10.5px}
+.topbar__lang [aria-current]{background:var(--ink);color:var(--bg)}
+.social--top .social__list{gap:0}
+.social--top .social__list a{width:34px;height:34px;border:0;color:var(--ink-2)}
+.social--top .social__list svg{width:15px;height:15px}
+@media (hover:hover) and (pointer:fine){
+  .topbar__links a:hover,.topbar__lang a:hover{color:var(--ink)}
+  .social--top .social__list a:hover{background:transparent;color:var(--ink)}
+}
+@media (max-width:1100px){.topbar__links{display:none}}
+@media (max-width:640px){
+  .topbar__contact a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .topbar__contact a{width:34px;height:34px;justify-content:center;border:1px solid var(--line)}
+  .topbar__contact svg{width:15px;height:15px;opacity:1}
+  .topbar__contact{gap:6px}
+}
 
 /* ---------- responsive ---------- */
 @media (max-width:1100px){

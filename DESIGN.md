@@ -46,8 +46,10 @@ MTM-Wappen ist Kundenlogo und bleibt.
 ## 4. Component Stylings
 
 - **Nav**: fixiert, dreispaltig (Menü-Button · Wappen zentriert · „Anfrage“). Über Fotos nur ein Verlauf oben; ab 40 px Scroll `rgba(11,11,12,.72)` + `blur(16px)` + Hairline.
+- **Topbar**: 44 px Service-Leiste über der Nav (Telefon/E-Mail links, Händler · Presse · Newsletter · Impressum · Datenschutz mittig, Social-Icons + DE/EN rechts), Hairline unten, klappt beim Scrollen auf 0 zu. Unter 1100 px ohne Textlinks, unter 640 px Telefon/E-Mail nur als Icons.
+- **Social** `.social`: drei 44-px-Hairline-Quadrate (Instagram, YouTube, Facebook) mit 18-px-Glyphen in `currentColor`; Hover invertiert. Sitzt im Menü, in der Kontakt-Adresse, im Footer (40 px) und in der Topbar (rahmenlos).
 - **Menü**: vollflächig schwarz, Links in H1-Größe mit Nummer, gestaffelt 50 ms eingeblendet; rechts unten Adresse. CSS-Transitions, dadurch jederzeit unterbrechbar.
-- **Hero-Slider**: 3 Slides, Crossfade 1.1 s `ease-in-out`, Bild fährt 8 s linear von `scale(1.08)` auf 1 (Ken Burns). Fortschrittsbalken 56×1.5 px pro Slide, 7 s, pausiert bei Hover. Wischen auf Touch, Pfeiltasten.
+- **Hero-Slider**: 3 Slides (Pangaea GT · RS3 R · R8 GT Supercharged), Crossfade 1.1 s `ease-in-out`, Bild fährt 8 s linear von `scale(1.08)` auf 1 (Ken Burns). Fortschrittsbalken 56×1.5 px pro Slide, 7 s, pausiert bei Hover. Wischen auf Touch, Pfeiltasten.
 - **Link** `.link`: Versalien, 1 px Unterstrich 40 % → 100 % bei Hover, Pfeil aus Strich + gedrehtem Winkel, rutscht 6 px.
 - **Button** `.btn`: 54 px, 1 px Rahmen in Textfarbe, Radius 0, Hover invertiert. `.btn--solid` ausgefüllt in Textfarbe (weiß auf Dunkel, schwarz auf Hell), Hover Chrom. `:active` `scale(.98)` 120 ms.
 - **Angebots-Kacheln** `.ptile` (12 Stück direkt unter dem Hero): dunkle Flächen (`--bg-2`) in einem Raster mit 1 px Hairline-Fugen, Index oben links, Bildfeld 4:3 in Chrom `#BFC0C2` – Produktfotos mit weißem Hintergrund liegen per `mix-blend-mode:multiply` darauf (`contain`, oder `--cover` formatfüllend), echte Szenenfotos (`--photo`) `cover` mit Verlauf ins Dunkle. Textfuß mit Hairline, Titel 13 px Versalien `'wdth' 112`, Untertitel 11.5 px `--ink-3`, Pfeil rechts unten (35 % → 100 %, rutscht 4 px). Hover hellt Kachel minimal und Bildfeld auf `#D6D6D8`, Bild `scale(1.05)`. Ohne Reveal, damit das Angebot sofort da ist. 6 → 4 → 2 Spalten.
