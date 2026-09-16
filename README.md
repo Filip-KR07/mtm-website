@@ -8,7 +8,7 @@ breite Archivo-Versalien, Radius 0 – Orientierung lamborghini.com (siehe `DESI
 ## Struktur
 
 ```
-index.html          Onepager: Hero-Slider · Intro · Leistungen (Scroller) · Stage 1 · Technik · Ablauf · Über MTM · Marken · FAQ · Kontakt
+index.html          Onepager: Hero-Slider · Angebot (12 Kacheln) · Intro · Stage 1 · Technik (M-Cantronic) · Ablauf · Fahrzeuge (Galerie) · Über MTM · Marken · FAQ · Kontakt
 style.css           alle Styles, Tokens in :root ganz oben
 main.js             Nav, Vollbild-Menü, Hero-Slider, Drag-Scroller, Formular (mailto), FAQ (WAAPI), GSAP-Reveals/Zähler/Parallax
 impressum.html      eigenständig, ohne JS
@@ -40,11 +40,12 @@ Vor dem ersten Deploy `https://DOMAIN/` in `index.html`, `impressum.html`,
 
 **Vom Kunden bestätigen / liefern**
 - [ ] Impressum & Datenschutz: alle `[Platzhalter]` (rot markiert) füllen, Rechtsform, Register, USt-ID, Verantwortlicher. Rechtstexte sind ein Entwurf – juristisch prüfen lassen.
-- [ ] Kontaktdaten in `index.html` (`#kontakt`): Adresse, Telefon, E-Mail, Öffnungszeiten. E-Mail-Adresse zusätzlich in `main.js` (`mailto:info@example.de`).
-- [ ] Fakten im Text prüfen: Gründung 1990 durch Roland Mayer, PLZ 85139, „Audi, VW, Porsche, Bentley, Lamborghini“, Stage-1-Umfang (Software/LLK/Turbolader), M-Cantronic-Aussagen (Echtzeit-Signaloptimierung, Rückrüstung, Plug-&-Play), Zähler „35+ Jahre / 5 Marken“.
+- [x] Kontaktdaten (Adresse, Telefon, E-Mail, Öffnungszeiten) von mtm-online.de/kontakt übernommen – in `index.html`, `main.js`, Impressum, Datenschutz. Bitte gegenprüfen.
+- [ ] Fakten im Text prüfen: Gründung 1990 durch Roland Mayer, PLZ 85139, Markenliste (nur Audi, Volkswagen, Porsche – laut mtm-online.de/tuning/?id=26; Bentley/Lamborghini bewusst entfernt), Stage-1-Umfang (Software/LLK/Turbolader), M-Cantronic-Aussagen (Echtzeit-Signaloptimierung, Rückrüstung, Plug-&-Play), Zähler „35+ Jahre / 5 Marken“.
 - [ ] Neue Sektionen inhaltlich freigeben: **Ablauf** (4 Schritte – stimmt der Prozess so?), **Marken** (Modellreihen pro Marke sind Beispiele, bitte anpassen), **FAQ** (Aussagen zu Eintragung, Garantie/Gewährleistung, Dauer, Rückrüstung, Partnerbetriebe sind Entwürfe und müssen von MTM bestätigt werden).
 - [ ] Stage 1 RS5 (B10): finale Werte für „8xx PS / 1xxx Nm“ eintragen (Spec-Tiles in `#stage1`), Banner-Grafik ggf. ohne eingebrannten Text als reines Foto liefern lassen.
-- [ ] **Hero 1–3 und Über MTM zeigen echte MTM-Fahrzeuge** (RS3 653 PS, RS6 1001 PS, R8 GT Supercharged 822 PS, roter RS6 Avant) – Originale von media.mtm-online.de (News-Bereich), in 1200/2000/2800 px unter `assets/img/hero-*`, `feature-rs6-mtm-*`. Nutzungsrecht beim Kunden bestätigen, PS-Angaben aus den News-Titeln prüfen. **Stage 1** zeigt noch einen Unsplash-Platzhalter (`feature-rs6-*`), weil das RS5-Banner nur 1500×438 px hat – RS5-Foto in hoher Auflösung anfragen.
+- [ ] **Hero 1–3 und Über MTM zeigen echte MTM-Fahrzeuge** (RS3 653 PS, RS6 1001 PS, R8 GT Supercharged 822 PS, roter RS6 Avant) – Originale von media.mtm-online.de (News-Bereich), in 1200/2000/2800 px unter `assets/img/hero-*`, `feature-rs6-mtm-*`. Nutzungsrecht beim Kunden bestätigen, PS-Angaben aus den News-Titeln prüfen. **Stage 1** zeigt den MTM RS6 Final Edition (Autozeitung-Strecke), weil das RS5-Banner nur 1500×438 px hat – RS5-Foto in hoher Auflösung anfragen.
+- [ ] **Pressefotos** (Autozeitung, Motorsport-Total, Evocars – aus den gespeicherten Artikeln in `Kunden/MTM`, Originale in `Kunden/MTM/bilder-presse`) werden in Galerie (`assets/img/gallery`), Technik (`technik-*.jpg`) und Stage 1 (`feature-rs6-final-*`) verwendet. Bildrechte liegen ggf. bei Fotografen/Redaktionen – vor Livegang mit MTM klären, ob es MTM-Pressematerial ist, sonst durch eigene Fotos ersetzen.
 - [ ] Optional: Galerie-Sektion, sobald weitere Fotos (Fahrzeuge, Werkstatt, Prüfstand) vorliegen.
 
 **Technisch**

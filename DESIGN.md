@@ -56,6 +56,8 @@ MTM-Wappen ist Kundenlogo und bleibt.
 - **Marken-Liste**: eine Zeile pro Marke in H1-Größe, Modellreihen rechts klein; Hover rückt 24 px ein.
 - **FAQ**: `<details>` mit Hairlines, Plus-Icon aus zwei 1-px-Strichen, Höhe + Deckkraft 260 ms `cubic-bezier(.23,1,.32,1)` per WAAPI.
 - **Formular**: nur Unterlinien, Labels als `.label`, Fokus hebt die Linie auf `--ink`.
+- **Technik (M-Cantronic)**: dunkle Sektion, links großes Motorraum-Foto 3:2 mit Verlauf und Bildunterschrift, rechts H2, Text und 2×2 Fakten-Raster in Hairlines; darunter drei Detailfotos als Hairline-Raster mit Nummer und Label unten links.
+- **Galerie** `.gal`: horizontaler Scroller (gleiche Mechanik wie früher der Leistungs-Scroller) mit 3:2-Karten `clamp(300px,34vw,560px)`, Bildunterschrift auf Verlauf unten links, Pfeile in Hairline-Optik.
 
 ## 5. Layout Principles
 

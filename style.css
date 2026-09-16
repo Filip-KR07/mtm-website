@@ -294,14 +294,41 @@ body.menu-open{overflow:hidden}
 .specs strong{font-size:clamp(30px,3vw,44px);font-weight:400;line-height:1;font-variation-settings:'wdth' 112}
 .specs span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
 
-/* ---------- technik ---------- */
-.technik__media{margin:0;background:#fff;border:1px solid var(--line-dark);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
-.technik__media img{width:100%;height:100%;object-fit:contain;padding:8%}
-.technik__copy h2{margin-bottom:24px}
-.technik__copy>p{color:var(--dark-2);font-size:17px}
-.list{display:grid;margin:28px 0 36px;border-top:1px solid var(--line-dark)}
-.list li{padding:14px 0;border-bottom:1px solid var(--line-dark);font-size:15px;display:flex;gap:16px}
-.list li::before{content:"—";opacity:.4}
+/* ---------- technik (m-cantronic) ---------- */
+.technik{background:var(--bg);border-top:1px solid var(--line)}
+.technik__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,80px);align-items:center}
+.technik__hero{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--line);background:var(--bg-2)}
+.technik__hero img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.technik__hero::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(180deg,rgba(11,11,12,0),rgba(11,11,12,.75));pointer-events:none}
+.technik__cap{position:absolute;left:20px;bottom:18px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.technik__cap .label{margin:0 0 4px;color:var(--ink-3)}
+.technik__copy h2{margin-bottom:22px}
+.technik__copy>p{color:var(--ink-2);font-size:17px}
+.technik__facts{display:grid;grid-template-columns:1fr 1fr;margin:30px 0 34px;border-top:1px solid var(--line)}
+.technik__facts li{padding:18px 20px 18px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
+.technik__facts li:nth-child(odd){border-right:1px solid var(--line);padding-right:20px}
+.technik__facts li:nth-child(even){padding-left:20px}
+.technik__facts strong{font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-variation-settings:'wdth' 112}
+.technik__facts span{font-size:13px;line-height:1.45;color:var(--ink-3)}
+.technik__details{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(36px,4vw,64px)}
+.technik__details li{position:relative;background:var(--bg-2);overflow:hidden;aspect-ratio:3/2}
+.technik__details img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:transform .8s var(--ease-out)}
+.technik__details span{position:absolute;left:16px;bottom:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.technik__details em{font-style:normal;color:var(--ink-3);margin-right:12px}
+@media (hover:hover) and (pointer:fine){.technik__details li:hover img{transform:scale(1.04)}}
+
+/* ---------- galerie ---------- */
+.gal{padding-block:clamp(88px,10vw,160px);background:var(--bg);border-top:1px solid var(--line)}
+.gal .section__head{margin-bottom:clamp(28px,3vw,44px)}
+.scroller__ctrl--dark .iconbtn{border-color:var(--line);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.scroller__ctrl--dark .iconbtn:hover{background:var(--ink);color:var(--dark)}}
+.gal__item{flex:0 0 clamp(300px,34vw,560px);scroll-snap-align:start}
+.gal__item figure{margin:0;position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--bg-2);border:1px solid var(--line)}
+.gal__item img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:transform .8s var(--ease-out);user-select:none;-webkit-user-drag:none}
+.gal__item figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(180deg,rgba(11,11,12,0),rgba(11,11,12,.8));display:flex;flex-direction:column;gap:2px}
+.gal__item strong{font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-variation-settings:'wdth' 112}
+.gal__item span{font-size:12px;color:var(--ink-2)}
+@media (hover:hover) and (pointer:fine){.gal__item:hover img{transform:scale(1.04)}}
 
 /* ---------- ablauf ---------- */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
@@ -396,7 +423,9 @@ body.menu-open{overflow:hidden}
   .feature{min-height:auto}
   .feature__media::after,.feature--right .feature__media::after{background:linear-gradient(180deg,rgba(11,11,12,.55),rgba(11,11,12,.7) 60%,rgba(11,11,12,.85) 100%)}
   .feature--right .feature__content{margin:0 auto;width:min(100% - 2*var(--gutter),620px)}
-  .technik__media{max-width:560px}
+  .technik__grid{grid-template-columns:1fr}
+  .technik__details{grid-template-columns:1fr 1fr}
+  .technik__details li:last-child{grid-column:1/-1}
 }
 @media (max-width:640px){
   .intro__facts{grid-template-columns:1fr}
@@ -415,6 +444,10 @@ body.menu-open{overflow:hidden}
   .footer__inner{flex-direction:column;align-items:flex-start}
   .hero__scroll{display:none}
   .tile{flex-basis:78vw}
+  .gal__item{flex-basis:80vw}
+  .technik__facts{grid-template-columns:1fr}
+  .technik__facts li{border-right:0!important;padding-left:0!important;padding-right:0!important}
+  .technik__details{grid-template-columns:1fr}
 }
 
 /* ---------- rechtstexte (impressum / datenschutz, ohne JS) ---------- */
@@ -434,3 +467,5 @@ body.menu-open{overflow:hidden}
 .legal a{color:var(--ink);border-bottom:1px solid var(--line)}
 .legal address{font-style:normal;margin-bottom:1em;color:var(--ink-2)}
 .legal .todo{color:var(--warn)}
+
+.brands__note{margin:28px 0 0;font-size:14px;color:var(--ink-3);max-width:60ch}

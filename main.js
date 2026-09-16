@@ -112,7 +112,7 @@
     const body = ['Name: ' + d.get('name'), 'E-Mail: ' + d.get('email'), 'Fahrzeug: ' + (fahrzeug || '–'), '', d.get('nachricht')].join('\n');
     note.classList.remove('is-error');
     note.textContent = 'Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage.';
-    location.href = 'mailto:info@example.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    location.href = 'mailto:info@mtm-online.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 
   /* ---------- faq (details mit animiertem Auf-/Zuklappen, WAAPI) ---------- */
