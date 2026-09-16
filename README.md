@@ -2,14 +2,15 @@
 
 Onepager für den Audi-Tuner MTM (Wettstetten bei Ingolstadt). Statisches HTML/CSS/JS
 ohne Build, GSAP-Scrollchoreografie, Deploy auf Vercel – nach dem Muster aus dem
-`neue-webseite`-Skill.
+`neue-webseite`-Skill. Look seit dem Redesign: cinematisch-dunkel mit weißen Blöcken,
+breite Archivo-Versalien, Radius 0 – Orientierung lamborghini.com (siehe `DESIGN.md`).
 
 ## Struktur
 
 ```
-index.html          Onepager: Hero · Ticker · Leistungen · Stage 1 · Technik · Ablauf · Über MTM · Marken · FAQ · Kontakt
+index.html          Onepager: Hero-Slider · Intro · Leistungen (Scroller) · Stage 1 · Technik · Ablauf · Über MTM · Marken · FAQ · Kontakt
 style.css           alle Styles, Tokens in :root ganz oben
-main.js             Nav, aktiver Abschnitt, Formular (mailto), FAQ-Akkordeon (WAAPI), GSAP-Reveals/Zähler
+main.js             Nav, Vollbild-Menü, Hero-Slider, Drag-Scroller, Formular (mailto), FAQ (WAAPI), GSAP-Reveals/Zähler/Parallax
 impressum.html      eigenständig, ohne JS
 datenschutz.html    eigenständig, ohne JS
 assets/img          Fotos (aus Kunden/MTM, umbenannt, JPEG q88)
@@ -57,4 +58,5 @@ Vor dem ersten Deploy `https://DOMAIN/` in `index.html`, `impressum.html`,
 - Reveal-Zustände (`opacity:0`) greifen nur mit `html.js`; ohne JS oder wenn GSAP nicht lädt, ist alles sichtbar (`main.js` entfernt die Klasse).
 - Produktfotos mit weißem Hintergrund liegen in weißen Panels (`.card__media`, `.panel--light`, `object-fit:contain`), Szenenfotos in dunklen (`.card__media--photo`, `.panel`).
 - `prefers-reduced-motion`: keine Animationen, Zähler zeigen sofort den Endwert.
-- Nav-Burger ab 900 px, Karten 4 → 2 → 1 Spalten (1100 / 640 px).
+- Menü ist immer ein Vollbild-Overlay (auch Desktop), Kacheln laufen im horizontalen Scroller.
+- Alle Fotos liegen nur mit 500 px Höhe vor – Vollbild-Sektionen kaschieren das mit Verläufen und `saturate(.85)`. Höher aufgelöste Fotos bringen hier am meisten.
