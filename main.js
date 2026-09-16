@@ -103,13 +103,18 @@
 
   /* ---------- galerie: Bilder vorladen, sobald die Sektion in die Nähe kommt (sonst ruckelt das seitliche Scrollen) ---------- */
   const gal = $('.gal');
-  if (gal && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((e) => e.isIntersecting)) return;
+  if (gal) {
+    let done = false;
+    const warm = () => {
+      if (done) return; done = true;
       $$('img[loading="lazy"]', gal).forEach((img) => { img.loading = 'eager'; img.decoding = 'async'; });
-      io.disconnect();
-    }, { rootMargin: '150% 0px' });
-    io.observe(gal);
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => { if (entries.some((e) => e.isIntersecting)) { warm(); io.disconnect(); } }, { rootMargin: '150% 0px' });
+      io.observe(gal);
+    }
+    // Fallback: kurz nach dem Laden, wenn der Hero steht – Galerie sitzt sonst beim ersten Wischen ohne Bilder da
+    addEventListener('load', () => setTimeout(warm, 2500), { once: true });
   }
 
   /* ---------- händlersuche (Filter im DOM, ohne Backend) ---------- */
