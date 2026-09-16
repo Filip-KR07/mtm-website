@@ -7,9 +7,9 @@ ohne Build, GSAP-Scrollchoreografie, Deploy auf Vercel – nach dem Muster aus d
 ## Struktur
 
 ```
-index.html          Onepager: Hero · Ticker · Leistungen · Stage 1 · Technik · Über MTM · Kontakt
+index.html          Onepager: Hero · Ticker · Leistungen · Stage 1 · Technik · Ablauf · Über MTM · Marken · FAQ · Kontakt
 style.css           alle Styles, Tokens in :root ganz oben
-main.js             Nav, aktiver Abschnitt, Formular (mailto), GSAP-Reveals/Zähler
+main.js             Nav, aktiver Abschnitt, Formular (mailto), FAQ-Akkordeon (WAAPI), GSAP-Reveals/Zähler
 impressum.html      eigenständig, ohne JS
 datenschutz.html    eigenständig, ohne JS
 assets/img          Fotos (aus Kunden/MTM, umbenannt, JPEG q88)
@@ -41,6 +41,7 @@ Vor dem ersten Deploy `https://DOMAIN/` in `index.html`, `impressum.html`,
 - [ ] Impressum & Datenschutz: alle `[Platzhalter]` (rot markiert) füllen, Rechtsform, Register, USt-ID, Verantwortlicher. Rechtstexte sind ein Entwurf – juristisch prüfen lassen.
 - [ ] Kontaktdaten in `index.html` (`#kontakt`): Adresse, Telefon, E-Mail, Öffnungszeiten. E-Mail-Adresse zusätzlich in `main.js` (`mailto:info@example.de`).
 - [ ] Fakten im Text prüfen: Gründung 1990 durch Roland Mayer, PLZ 85139, „Audi, VW, Porsche, Bentley, Lamborghini“, Stage-1-Umfang (Software/LLK/Turbolader), M-Cantronic-Aussagen (Echtzeit-Signaloptimierung, Rückrüstung, Plug-&-Play), Zähler „35+ Jahre / 5 Marken“.
+- [ ] Neue Sektionen inhaltlich freigeben: **Ablauf** (4 Schritte – stimmt der Prozess so?), **Marken** (Modellreihen pro Marke sind Beispiele, bitte anpassen), **FAQ** (Aussagen zu Eintragung, Garantie/Gewährleistung, Dauer, Rückrüstung, Partnerbetriebe sind Entwürfe und müssen von MTM bestätigt werden).
 - [ ] Stage 1 RS5 (B10): finale Werte für „8xx PS / 1xxx Nm“ eintragen (Spec-Tiles in `#stage1`), Banner-Grafik ggf. ohne eingebrannten Text als reines Foto liefern lassen.
 - [ ] Bildmaterial in höherer Auflösung: alle Fotos liegen nur mit 500 px Höhe vor. Für Hero (`motor-rs.jpg`) und Panels mindestens 1600 px Breite anfragen. Erst dann `medien-assets` (WebP/AVIF, srcset) durchlaufen.
 - [ ] Optional: Galerie-Sektion, sobald weitere Fotos (Fahrzeuge, Werkstatt, Prüfstand) vorliegen.

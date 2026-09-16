@@ -66,6 +66,41 @@
     location.href = 'mailto:info@example.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 
+  /* ---------- faq (details mit animiertem Auf-/Zuklappen, WAAPI, ohne GSAP) ---------- */
+  $$('.faq__item').forEach((item) => {
+    const summary = $('summary', item);
+    const body = $('.faq__body', item);
+    let anim = null;
+    const run = (from, to, onDone) => {
+      if (anim) anim.cancel();
+      const a = body.animate(
+        [{ height: from + 'px', opacity: from ? 1 : 0 }, { height: to + 'px', opacity: to ? 1 : 0 }],
+        { duration: 260, easing: 'cubic-bezier(.23,1,.32,1)' }
+      );
+      anim = a;
+      // Zustand immer abschließen – auch wenn der Tab im Hintergrund kein finish-Event liefert.
+      const finish = () => {
+        if (anim !== a) return;
+        anim = null;
+        if (a.playState !== 'finished') a.cancel();
+        body.style.height = '';
+        onDone && onDone();
+      };
+      a.onfinish = finish;
+      setTimeout(finish, 320);
+    };
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (reduced) { item.open = !item.open; return; }
+      if (item.open) {
+        run(body.offsetHeight, 0, () => { item.open = false; });
+      } else {
+        item.open = true;
+        run(0, body.scrollHeight);
+      }
+    });
+  });
+
   /* ---------- motion ---------- */
   if (!window.gsap || !window.ScrollTrigger) { root.classList.remove('js'); return; }
   gsap.registerPlugin(ScrollTrigger);

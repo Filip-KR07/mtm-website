@@ -50,6 +50,9 @@ Regel: Rot ist ein Signal, keine Fläche. Pro Viewport höchstens ein roter Butt
 - **Nav**: fixiert, transparent; ab 24 px Scroll `rgba(10,10,11,.82)` + `blur(14px)` + Linie. Aktiver Abschnitt weiß (`aria-current`). Mobil Burger, Panel unter der Nav.
 - **Chip**: dunkel-transparent mit Blur, Chrom-Text, 14 px Display.
 - **Ticker**: 38 s lineare Schleife, Rauten in Rot als Trenner, an den Rändern maskiert.
+- **Steps** `.step` (Ablauf): Karte wie `.card` ohne Bild, Nummer rot, 2 px roter Balken oben, der von 18 % auf volle Breite wächst (Hover, nur `hover:hover`). 4 → 2 → 1 Spalten.
+- **Marken-Leiste** `.brands__list`: eine Zeile aus 5 Zellen auf `--bg`, 1 px Linien als Trenner, Markenname in Display-Versalien, Modellreihen klein grau. 5 → 3 → 1 Spalten.
+- **FAQ** `.faq__item`: native `<details>`, Linie oben/unten, Summary in Display 22 px Versalien mit Plus-Icon rechts (zwei 16 px Striche, der senkrechte dreht auf 0° beim Öffnen, beide werden rot). Auf-/Zuklappen animiert `height` + `opacity` 260 ms `cubic-bezier(.23,1,.32,1)` per WAAPI; bei `prefers-reduced-motion` sofort.
 
 ## 5. Layout Principles
 
