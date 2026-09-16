@@ -6,10 +6,11 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = matchMedia('(hover: none)').matches;
   const root = document.documentElement;
+  const EN = root.lang === 'en';
 
   /* ---------- nav ---------- */
   const nav = $('#nav');
-  const setScrolled = () => nav.classList.toggle('is-scrolled', scrollY > 40);
+  const setScrolled = () => { if (nav) nav.classList.toggle('is-scrolled', scrollY > 40); };
   setScrolled();
   addEventListener('scroll', setScrolled, { passive: true });
 
@@ -17,19 +18,23 @@
   const menu = $('#menu');
   const toggle = $('#nav-toggle');
   const setMenu = (open) => {
+    if (!menu || !toggle) return;
     menu.classList.toggle('is-open', open);
     menu.setAttribute('aria-hidden', String(!open));
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    toggle.setAttribute('aria-label', EN ? (open ? 'Close menu' : 'Open menu') : (open ? 'Menü schließen' : 'Menü öffnen'));
     document.body.classList.toggle('menu-open', open);
     nav.classList.toggle('is-scrolled', open || scrollY > 40);
   };
-  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
-  $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  if (menu && toggle) {
+    toggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+    $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  }
   addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
   /* ---------- hero slider ---------- */
   const hero = $('.hero');
+  if (hero) {
   const slides = $$('[data-slide]', hero);
   const dots = $$('.hero__dots button', hero);
   const DUR = 7000;
@@ -69,6 +74,7 @@
   document.addEventListener('visibilitychange', () => { document.hidden ? clearTimeout(timer) : schedule(); });
   // Erst starten, wenn die Schrift da ist – sonst springt die Headline mitten in der Animation.
   Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 700))]).then(() => show(0));
+  }
 
   /* ---------- scroller (leistungen): Pfeile + Maus-Drag, 1:1 am Zeiger ---------- */
   const scroller = $('#scroller');
@@ -95,24 +101,55 @@
     scroller.addEventListener('click', (e) => { if (moved) { e.preventDefault(); moved = 0; } }, true);
   }
 
+  /* ---------- händlersuche (Filter im DOM, ohne Backend) ---------- */
+  const finder = $('#finder');
+  if (finder) {
+    const items = $$('#dealers .dealer');
+    const cont = $('#f-cont'), cc = $('#f-cc'), plz = $('#f-plz');
+    const count = $('#finder-count'), empty = $('#finder-empty');
+    const CONT = {};
+    $$('#f-cc option').forEach((o) => { const it = items.find((d) => d.dataset.cc === o.value); if (it) CONT[o.value] = it.dataset.cont; });
+    const apply = () => {
+      const c = cont.value, k = cc.value, p = plz.value.trim().replace(/\D/g, '');
+      let n = 0;
+      items.forEach((d) => {
+        const ok = (!c || d.dataset.cont === c) && (!k || d.dataset.cc === k) && (!p || d.dataset.plz.startsWith(p));
+        d.hidden = !ok; if (ok) n++;
+      });
+      $$('#f-cc option').forEach((o) => { if (o.value) o.hidden = !!c && CONT[o.value] !== c; });
+      if (c && k && CONT[k] !== c) { cc.value = ''; return apply(); }
+      count.textContent = n === 1 ? '1 Händler' : n + ' Händler';
+      empty.hidden = n > 0;
+    };
+    [cont, cc].forEach((s) => s.addEventListener('change', apply));
+    plz.addEventListener('input', apply);
+    finder.addEventListener('reset', () => setTimeout(apply, 0));
+    finder.addEventListener('submit', (e) => e.preventDefault());
+    apply();
+  }
+
   /* ---------- formular (mailto-Fallback, bis ein Endpunkt steht) ---------- */
-  const form = $('#contact-form');
+  const form = $('#contact-form') || $('[data-form]');
   const note = $('#form-note');
-  form.addEventListener('submit', (e) => {
+  if (form) form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
-      note.textContent = 'Bitte füllen Sie alle Pflichtfelder aus und bestätigen Sie den Datenschutzhinweis.';
+      note.textContent = EN ? 'Please fill in all required fields and confirm the privacy notice.' : 'Bitte füllen Sie alle Pflichtfelder aus und bestätigen Sie den Datenschutzhinweis.';
       note.classList.add('is-error');
       form.reportValidity();
       return;
     }
     const d = new FormData(form);
+    const kind = form.dataset.form || 'kontakt';
     const fahrzeug = (d.get('fahrzeug') || '').toString().trim();
-    const subject = 'Anfrage über die Website' + (fahrzeug ? ' – ' + fahrzeug : '');
-    const body = ['Name: ' + d.get('name'), 'E-Mail: ' + d.get('email'), 'Fahrzeug: ' + (fahrzeug || '–'), '', d.get('nachricht')].join('\n');
+    const subjects = { kontakt: (EN ? 'Enquiry via website' : 'Anfrage über die Website') + (fahrzeug ? ' – ' + fahrzeug : ''), presse: 'Antrag auf Pressekonto', newsletter: 'Newsletter-Anmeldung' };
+    const subject = subjects[kind];
+    const body = kind === 'kontakt'
+      ? ['Name: ' + d.get('name'), (EN ? 'Email: ' : 'E-Mail: ') + d.get('email'), (EN ? 'Car: ' : 'Fahrzeug: ') + (fahrzeug || '–'), '', d.get('nachricht')].join('\n')
+      : Array.from(d.entries()).filter(([k]) => k !== 'datenschutz').map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + (v || '–')).join('\n');
     note.classList.remove('is-error');
-    note.textContent = 'Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage.';
-    location.href = 'mailto:info@mtm-online.de?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    note.textContent = EN ? 'Your email client opens with the prepared enquiry.' : 'Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage.';
+    location.href = 'mailto:' + (kind === 'presse' ? 'presse@mtm-online.de' : 'info@mtm-online.de') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 
   /* ---------- faq (details mit animiertem Auf-/Zuklappen, WAAPI) ---------- */
@@ -146,7 +183,7 @@
   });
 
   /* ---------- motion (GSAP) ---------- */
-  if (!window.gsap || !window.ScrollTrigger) { root.classList.remove('js'); return; }
+  if (!window.gsap || !window.ScrollTrigger) { root.classList.remove('js'); $$('[data-count]').forEach((el) => { el.textContent = el.dataset.count; }); return; }
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
 

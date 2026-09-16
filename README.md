@@ -8,6 +8,10 @@ breite Archivo-Versalien, Radius 0 – Orientierung lamborghini.com (siehe `DESI
 ## Struktur
 
 ```
+index-en.html       Englische Fassung des Onepagers (gleiche Struktur, Formulartexte über html[lang])
+haendler.html       Händlersuche mit Kontinent/Land/PLZ-Filter (Daten im DOM, Filter in main.js)
+presse.html         Presseportal mit Akkreditierungsformular
+newsletter.html     Newsletter-Anmeldung
 index.html          Onepager: Hero-Slider · Angebot (12 Kacheln) · Intro · Stage 1 · Technik (M-Cantronic) · Ablauf · Fahrzeuge (Galerie) · Über MTM · Marken · FAQ · Kontakt
 style.css           alle Styles, Tokens in :root ganz oben
 main.js             Nav (mit Topbar, klappt beim Scrollen zu), Vollbild-Menü, Hero-Slider, Drag-Scroller, Formular (mailto), FAQ (WAAPI), GSAP-Reveals/Zähler/Parallax
@@ -61,6 +65,8 @@ Vor dem ersten Deploy `https://DOMAIN/` in `index.html`, `impressum.html`,
 - `prefers-reduced-motion`: keine Animationen, Zähler zeigen sofort den Endwert.
 - Menü ist immer ein Vollbild-Overlay (auch Desktop), Kacheln laufen im horizontalen Scroller.
 - Alle Fotos liegen nur mit 500 px Höhe vor – Vollbild-Sektionen kaschieren das mit Verläufen und `saturate(.85)`. Höher aufgelöste Fotos bringen hier am meisten.
-- [ ] Topbar-Links Händler / Presse / Newsletter zeigen vorerst auf mtm-online.de – durch eigene Seiten ersetzen, sobald vorhanden. EN-Schalter ebenfalls.
+- [ ] Händlerliste (haendler.html) ist ein Stand von mtm-online.de/haendler (108 Händler, 32 Länder) – vor Livegang mit MTM abgleichen; Händler-Login bleibt im MTM-Partnerportal.
+- [ ] Presse-Akkreditierung und Newsletter-Anmeldung laufen per mailto (presse@ / info@) – echten Endpunkt bzw. Newsletter-Tool (Original nutzt Newsletter2Go/Brevo) anbinden. presse@mtm-online.de mit MTM bestätigen.
+- [ ] Englische Seite (index-en.html) ist eine Vollübersetzung des Onepagers; Impressum/Datenschutz bleiben deutsch.
 - [ ] Social-Profile (facebook.com/motorentechnikmayer, instagram.com/mtmcars, youtube.com/user/mtmgmbh) mit MTM bestätigen.
-- [ ] Hero-Slide 1 (Pangaea GT) nutzt ein Pressefoto von auto-motor-und-sport.de – Rechte klären oder MTM-Original einsetzen.
+- [ ] Hero-Fotos: Pangaea GT (Carscoops/MTM-Pressebild) und RS3 R (Auto Bild) – Rechte klären oder MTM-Originale einsetzen.

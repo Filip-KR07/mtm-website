@@ -59,6 +59,7 @@ MTM-Wappen ist Kundenlogo und bleibt.
 - **FAQ**: `<details>` mit Hairlines, Plus-Icon aus zwei 1-px-Strichen, Höhe + Deckkraft 260 ms `cubic-bezier(.23,1,.32,1)` per WAAPI.
 - **Formular**: nur Unterlinien, Labels als `.label`, Fokus hebt die Linie auf `--ink`.
 - **Technik (M-Cantronic)**: dunkle Sektion, links großes Motorraum-Foto 3:2 mit Verlauf und Bildunterschrift, rechts H2, Text und 2×2 Fakten-Raster in Hairlines; darunter drei Detailfotos als Hairline-Raster mit Nummer und Label unten links.
+- **Unterseiten** (Händler, Presse, Newsletter, Impressum): `.pagehead` dunkel mit Label, H1 in Hero-Größe und Einleitungstext, danach Wechsel hell/dunkel wie im Onepager. Listen als `.list-lines` (zweispaltige Hairline-Zeilen), Vorteile als `.steps--3`. **Händlersuche**: Formularzeile (zwei Selects, PLZ, Reset) über einem 3-spaltigen Hairline-Raster `.dealers` mit Land-Label, Name, Adresse, Kontakt und Links „Auf Karte zeigen“/„Anfrage“; Filter rein clientseitig. **Impressum**: Pflichtangaben als 3×2 Hairline-Raster `.legal__grid`, Haftungstexte darunter max. 760 px.
 - **Galerie** `.gal`: horizontaler Scroller (gleiche Mechanik wie früher der Leistungs-Scroller) mit 3:2-Karten `clamp(300px,34vw,560px)`, Bildunterschrift auf Verlauf unten links, Pfeile in Hairline-Optik.
 
 ## 5. Layout Principles

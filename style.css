@@ -293,6 +293,7 @@ body.menu-open{overflow:hidden}
 .specs li:last-child{border-right:0}
 .specs strong{font-size:clamp(30px,3vw,44px);font-weight:400;line-height:1;font-variation-settings:'wdth' 112}
 .specs span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.specs strong span{font:inherit;letter-spacing:0;text-transform:none;color:inherit}
 
 /* ---------- technik (m-cantronic) ---------- */
 .technik{background:var(--bg);border-top:1px solid var(--line)}
@@ -447,6 +448,55 @@ body.menu-open{overflow:hidden}
   .topbar__contact{gap:6px}
 }
 
+/* ---------- unterseiten: kopf, listen, händlersuche, impressum ---------- */
+.pagehead{padding:clamp(56px,8vw,120px) 0 clamp(40px,5vw,72px);background:var(--bg)}
+.pagehead--compact{padding-bottom:clamp(28px,3vw,44px)}
+.pagehead h1{font-size:clamp(44px,7.2vw,118px);font-variation-settings:'wdth' 118;line-height:.96;margin:14px 0 22px}
+.pagehead__text{max-width:720px;font-size:17px;color:var(--ink-2)}
+.pagehead .specs{margin-top:44px}
+.section__note{max-width:720px;margin-top:40px;color:var(--dark-2)}
+.section__note a{color:var(--dark);border-bottom:1px solid var(--line-dark)}
+.steps--3{grid-template-columns:repeat(3,1fr)}
+.steps--3 li:nth-child(n+4){border-top:1px solid var(--line-dark);padding-top:28px}
+.steps--3 li:nth-child(4){padding-left:0}
+.list-lines{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.section--paper .list-lines{border-color:var(--line-dark)}
+.list-lines li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 28px;padding:20px 0;border-bottom:1px solid var(--line)}
+.section--paper .list-lines li{border-color:var(--line-dark)}
+.list-lines strong{font-weight:500;font-size:15px;text-transform:uppercase;letter-spacing:.06em;font-variation-settings:'wdth' 112}
+.list-lines span{color:var(--ink-2);font-size:15px}
+.section--paper .list-lines span{color:var(--dark-2)}
+.finder__form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0 28px;align-items:end;margin-top:8px}
+.finder__form .btn{height:44px;padding:0 22px;font-size:11.5px;margin-bottom:6px}
+.field--select select{width:100%;appearance:none;-webkit-appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F2F1EE' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 2px center;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:inherit;font-size:16px;padding:12px 24px 12px 0;border-radius:0;cursor:pointer}
+.field--select select:focus{outline:0;border-color:var(--ink)}
+.field--select select option{background:var(--bg-2);color:var(--ink)}
+.finder__count{margin:28px 0 12px}
+.dealers{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.dealer{background:var(--bg);padding:26px 24px 22px;display:flex;flex-direction:column;gap:8px;min-height:230px}
+.dealer[hidden]{display:none}
+.dealer__country{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.dealer h3{font-size:16px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-variation-settings:'wdth' 112;line-height:1.25;margin:2px 0 4px}
+.dealer p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.dealer__contact a{border-bottom:1px solid var(--line);transition:border-color var(--dur)}
+.dealer__actions{margin-top:auto!important;padding-top:16px;display:flex;gap:22px;flex-wrap:wrap}
+.dealer__actions .link{font-size:11px}
+.finder__empty{margin-top:28px;color:var(--ink-2)}
+.finder__empty a{border-bottom:1px solid var(--line)}
+@media (hover:hover) and (pointer:fine){.dealer__contact a:hover{border-color:var(--ink)}}
+.legal__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-bottom:clamp(48px,6vw,88px)}
+.legal__grid > div{background:var(--paper);padding:26px 24px 24px}
+.legal__grid .label{display:block;margin-bottom:12px}
+.legal__grid p{margin:0;font-size:15.5px;line-height:1.6;color:var(--dark)}
+.legal__grid a{border-bottom:1px solid var(--line-dark)}
+.legal__text{max-width:760px}
+.legal__text h2{font-size:clamp(20px,2.2vw,26px);margin:40px 0 10px}
+.legal__text h2:first-child{margin-top:0}
+.legal__text p{color:var(--dark-2)}
+.legal .todo{color:var(--warn)}
+@media (max-width:1100px){.steps--3{grid-template-columns:1fr 1fr}.steps--3 li:nth-child(n+3){border-top:1px solid var(--line-dark);padding-top:28px}.steps--3 li:nth-child(odd){padding-left:0}.steps--3 li:nth-child(even){padding-left:32px}.dealers{grid-template-columns:repeat(2,minmax(0,1fr))}.finder__form{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.steps--3{grid-template-columns:1fr}.steps--3 li{padding-left:0!important;border-top:1px solid var(--line-dark);padding-top:24px}.list-lines li{grid-template-columns:1fr}.dealers{grid-template-columns:1fr}.finder__form{grid-template-columns:1fr}.legal__grid{grid-template-columns:1fr}}
+
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .steps{grid-template-columns:1fr 1fr}
@@ -500,10 +550,9 @@ body.menu-open{overflow:hidden}
 .nav__brand-text strong{color:var(--ink)}
 .btn--ghost{border-color:var(--line);color:var(--ink)}
 .btn--sm{min-height:42px;padding:0 18px;font-size:11px}
-.legal{padding:clamp(48px,6vw,80px) 0 clamp(80px,10vw,140px)}
-.legal .container{max-width:760px}
 .legal h1{font-size:clamp(36px,6vw,80px);font-variation-settings:'wdth' 118;line-height:1;margin-bottom:36px}
 .legal h2{font-size:clamp(20px,2.4vw,28px);margin:44px 0 12px}
+.legal .container{max-width:none}
 .legal p,.legal li{color:var(--ink-2)}
 .legal ul{padding-left:20px;list-style:disc}
 .legal a{color:var(--ink);border-bottom:1px solid var(--line)}
