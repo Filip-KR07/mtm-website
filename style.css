@@ -173,7 +173,7 @@ body.menu-open{overflow:hidden}
     linear-gradient(180deg,rgba(11,11,12,.25),rgba(11,11,12,0) 30%,rgba(11,11,12,.6) 100%);
 }
 .hero__slide--bright .hero__media img{filter:none}
-.hero__slide--bright .hero__media::after{background:linear-gradient(180deg,rgba(11,11,12,.22),rgba(11,11,12,0) 22%,rgba(11,11,12,0) 55%,rgba(11,11,12,.55) 100%)}
+.hero__slide--bright .hero__media::after{background:linear-gradient(180deg,rgba(11,11,12,.3),rgba(11,11,12,.12) 25%,rgba(11,11,12,.12) 50%,rgba(11,11,12,.6) 100%)}
 .hero__content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(120px,16vh,180px)}
 .hero__title{
   font-size:clamp(44px,7.2vw,118px);line-height:.96;font-variation-settings:'wdth' 118;letter-spacing:-.005em;
