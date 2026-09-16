@@ -9,7 +9,8 @@
   --ink:#F2F1EE; --ink-2:rgba(242,241,238,.68); --ink-3:rgba(242,241,238,.42);
   --dark:#0B0B0C; --dark-2:rgba(11,11,12,.66); --dark-3:rgba(11,11,12,.42);
   --line:rgba(255,255,255,.14); --line-dark:rgba(11,11,12,.14);
-  --accent:#E4001B;
+  --accent:#C9CBCF; /* Chrom – neutraler Akzent, bewusst kein Rot */
+  --warn:#D8B24A;
   --font:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --gutter:clamp(20px,4vw,64px); --max:1520px;
   --nav-h:76px;
@@ -35,8 +36,8 @@ h1,h2,h3{margin:0;font-weight:500;text-transform:uppercase;text-wrap:balance}
 h2{font-variation-settings:'wdth' 118;font-size:clamp(30px,3.6vw,54px);line-height:1.04;letter-spacing:.005em}
 h3{font-variation-settings:'wdth' 112;font-size:19px;line-height:1.2;letter-spacing:.03em}
 strong{font-weight:500}
-::selection{background:var(--accent);color:#fff}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--ink);color:var(--dark)}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 
 .label{
   display:block;margin:0 0 20px;
@@ -53,7 +54,7 @@ strong{font-weight:500}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px);align-items:center}
 .grid-2--top{align-items:start}
 
-.skip{position:absolute;left:var(--gutter);top:-100px;z-index:100;padding:10px 16px;background:var(--accent);color:#fff}
+.skip{position:absolute;left:var(--gutter);top:-100px;z-index:100;padding:10px 16px;background:var(--ink);color:var(--dark)}
 .skip:focus{top:12px}
 
 /* Reveal-Zustand nur mit JS; ohne JS/GSAP ist alles sichtbar. */
@@ -88,10 +89,10 @@ strong{font-weight:500}
 }
 .btn:active{transform:scale(.98)}
 .btn--solid{background:var(--ink);color:var(--dark);border-color:var(--ink)}
-.section--paper .btn--solid,.contact .btn--solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.section--paper .btn--solid{background:var(--dark);border-color:var(--dark);color:var(--paper)}
 @media (hover:hover) and (pointer:fine){
   .btn:hover{background:var(--ink);color:var(--dark)}
-  .btn--solid:hover{background:#fff;border-color:#fff;color:var(--dark)}
+  .btn--solid:hover{background:var(--accent);border-color:var(--accent);color:var(--dark)}
 }
 
 /* ---------- nav ---------- */
@@ -291,7 +292,7 @@ body.menu-open{overflow:hidden}
 .faq__item summary::before,.faq__item summary::after{content:"";position:absolute;right:6px;top:50%;width:16px;height:1px;margin-top:-.5px;background:currentColor;transition:transform .3s var(--ease-out)}
 .faq__item summary::after{transform:rotate(90deg)}
 .faq__item[open] summary::after{transform:rotate(0)}
-@media (hover:hover) and (pointer:fine){.faq__item summary:hover{color:var(--accent)}}
+@media (hover:hover) and (pointer:fine){.faq__item summary:hover{color:var(--dark-2)}}
 .faq__body{overflow:hidden}
 .faq__body p{margin:0;padding:0 48px 24px 0;color:var(--dark-2);font-size:15px}
 
@@ -315,12 +316,12 @@ body.menu-open{overflow:hidden}
 .field textarea{resize:vertical;min-height:110px}
 .field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
 .field input:focus,.field textarea:focus{outline:0;border-color:var(--ink)}
-.field input:user-invalid,.field textarea:user-invalid{border-color:var(--accent)}
+.field input:user-invalid,.field textarea:user-invalid{border-color:var(--warn)}
 .check{display:flex;gap:14px;align-items:flex-start;font-size:13px;color:var(--ink-2);cursor:pointer}
-.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);flex-shrink:0}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--ink);flex-shrink:0}
 .check a{color:var(--ink);border-bottom:1px solid var(--line)}
 .form__note{margin:0;font-size:13.5px;color:var(--ink-2);min-height:1.4em}
-.form__note.is-error{color:#FF5A6E}
+.form__note.is-error{color:var(--warn)}
 
 /* ---------- footer ---------- */
 .footer{border-top:1px solid var(--line);padding:44px 0 calc(36px + env(safe-area-inset-bottom));font-size:12px;letter-spacing:.14em;text-transform:uppercase}
@@ -386,4 +387,4 @@ body.menu-open{overflow:hidden}
 .legal ul{padding-left:20px;list-style:disc}
 .legal a{color:var(--ink);border-bottom:1px solid var(--line)}
 .legal address{font-style:normal;margin-bottom:1em;color:var(--ink-2)}
-.legal .todo{color:#FF5A6E}
+.legal .todo{color:var(--warn)}
