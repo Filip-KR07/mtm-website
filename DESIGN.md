@@ -9,7 +9,8 @@ Cinematisch und zurückhaltend, orientiert an Hersteller-Auftritten wie
 lamborghini.com: Vollbild-Fotos mit dunklen Verläufen, dazwischen ruhige weiße
 Blöcke wie Katalogseiten. Die Typografie trägt die Marke – breite Grotesk-Versalien
 in mittlerem Gewicht, nicht fett. Kleine Labels mit weitem Buchstabenabstand
-ordnen ein. Rot kommt nur als Signal vor (Senden-Button, Fokus, Hover im FAQ).
+ordnen ein. Die Palette ist komplett monochrom – Schwarz, Papierweiß, Chrom. Kein Rot,
+kein Orange (Hausregel: wirkt wie Fremd-Branding).
 Keine Rundungen, keine Schatten, keine Pillen, keine Verläufe auf Flächen –
 nur auf Fotos, um Text lesbar zu machen und die niedrige Bildauflösung zu kaschieren.
 
@@ -24,10 +25,13 @@ nur auf Fotos, um Text lesbar zu machen und die niedrige Bildauflösung zu kasch
 | `--ink` / `--ink-2` / `--ink-3` | `#F2F1EE` / 68 % / 42 % | Text auf Dunkel: Headline / Fließtext / Labels |
 | `--dark` / `--dark-2` / `--dark-3` | `#0B0B0C` / 66 % / 42 % | Text auf Hell in derselben Staffelung |
 | `--line` / `--line-dark` | weiß 14 % / schwarz 14 % | Hairlines auf Dunkel / Hell |
-| `--accent` | `#E4001B` | MTM-Rot, ausschließlich als Signal |
+| `--accent` | `#C9CBCF` | Chrom – Hover des ausgefüllten Buttons, metallische Details |
+| `--warn` | `#D8B24A` | Bernstein für Formularfehler und Platzhalter in Rechtstexten |
 
 Regel: Sektionen wechseln dunkel/hell in Blöcken. Innerhalb eines Blocks keine
-weitere Farbfläche.
+weitere Farbfläche. Rot ist auf der gesamten Seite tabu – auch nicht für Fokus,
+Selektion oder Fehler (Fokus = `currentColor`, Fehler = `--warn`). Das Rot im
+MTM-Wappen ist Kundenlogo und bleibt.
 
 ## 3. Typography Rules
 
@@ -45,7 +49,7 @@ weitere Farbfläche.
 - **Menü**: vollflächig schwarz, Links in H1-Größe mit Nummer, gestaffelt 50 ms eingeblendet; rechts unten Adresse. CSS-Transitions, dadurch jederzeit unterbrechbar.
 - **Hero-Slider**: 3 Slides, Crossfade 1.1 s `ease-in-out`, Bild fährt 8 s linear von `scale(1.08)` auf 1 (Ken Burns). Fortschrittsbalken 56×1.5 px pro Slide, 7 s, pausiert bei Hover. Wischen auf Touch, Pfeiltasten.
 - **Link** `.link`: Versalien, 1 px Unterstrich 40 % → 100 % bei Hover, Pfeil aus Strich + gedrehtem Winkel, rutscht 6 px.
-- **Button** `.btn`: 54 px, 1 px Rahmen in Textfarbe, Radius 0, Hover invertiert. `.btn--solid` rot nur für „Anfrage senden“. `:active` `scale(.98)` 120 ms.
+- **Button** `.btn`: 54 px, 1 px Rahmen in Textfarbe, Radius 0, Hover invertiert. `.btn--solid` ausgefüllt in Textfarbe (weiß auf Dunkel, schwarz auf Hell), Hover Chrom. `:active` `scale(.98)` 120 ms.
 - **Kacheln** `.tile` (Leistungen): weiß, Hairline-Rahmen, Bildfeld 4:3 (`contain` mit 10 % Innenabstand, Szenenfotos `cover`), Nummer, H3, Text. Horizontaler Scroller mit Snap, Pfeilen und Maus-Drag 1:1.
 - **Feature** (Vollbild): `min-height:92svh`, Foto mit Parallax ±8 %, Verlauf von der Textseite her, Inhalt max. 620 px. Variante `--right` spiegelt Verlauf und Textspalte.
 - **Specs / Intro-Fakten / Steps**: Hairlines oben und unten, Spalten durch Hairlines getrennt, Zahl groß und leicht, Label klein.
@@ -67,10 +71,10 @@ dunkel/hell. Hairlines statt Kanten. Blur ausschließlich in der gescrollten Nav
 
 ## 7. Do's and Don'ts
 
-- Do: Fotos vollflächig, immer mit Verlauf von der Textseite; Sättigung 85 %, Kontrast 105 %.
+- Do: Fotos vollflächig nur ab ~2000 px Breite (aktuell Unsplash-Platzhalter in `assets/img/hero-*`, `feature-*`), immer mit Verlauf von der Textseite; Sättigung 85 %, Kontrast 105 %.
 - Do: Produktfotos auf Weiß nur in hellen Sektionen oder weißen Kacheln.
 - Do: Ein Gedanke pro Sektion, viel Luft, wenige Elemente.
-- Don't: Radien, Schatten, fette Headlines, Rot als Fläche, mehr als ein Button pro Sektion.
+- Don't: Radien, Schatten, fette Headlines, Rot oder Orange in jeder Form, mehr als ein Button pro Sektion.
 - Don't: Text in Bilder brennen (Stage-1-Banner wird deshalb rechts angeschnitten, `object-position:100%`).
 - Don't: Kritische Inhalte hinter Reveals verstecken, die ohne JS unsichtbar bleiben.
 
