@@ -117,6 +117,46 @@
     addEventListener('load', () => setTimeout(warm, 2500), { once: true });
   }
 
+  /* ---------- galerie: langsamer Endlos-Lauf nach links ---------- */
+  const galScroller = gal && $('#scroller', gal);
+  if (galScroller && !reduced) {
+    const track = $('.scroller__track', galScroller);
+    const originals = Array.from(track.children);
+    originals.forEach((li) => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); });
+    galScroller.classList.add('is-auto');
+    let loopW = 0, paused = false, userHold = 0, visible = true, last = 0;
+    const SPEED = 28; // px pro Sekunde
+    const measure = () => { const first = originals[0], firstClone = track.children[originals.length]; loopW = firstClone.offsetLeft - first.offsetLeft; };
+    measure(); addEventListener('resize', measure);
+    const tick = (now) => {
+      const dt = Math.min(48, now - (last || now)); last = now;
+      if (!paused && visible && now > userHold && loopW > 0) {
+        let x = galScroller.scrollLeft + SPEED * dt / 1000;
+        if (x >= loopW) x -= loopW;
+        galScroller.scrollLeft = x;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    const hold = (ms) => { userHold = performance.now() + ms; };
+    if (!isTouch) {
+      galScroller.addEventListener('pointerenter', () => { paused = true; });
+      galScroller.addEventListener('pointerleave', () => { paused = false; });
+    }
+    galScroller.addEventListener('touchstart', () => hold(4000), { passive: true });
+    galScroller.addEventListener('wheel', () => hold(3000), { passive: true });
+    galScroller.addEventListener('focusin', () => { paused = true; });
+    galScroller.addEventListener('focusout', () => { paused = false; });
+    $$('[data-scroll]').forEach((b) => b.addEventListener('click', () => hold(3000)));
+    // Nahtloser Übergang auch bei manuellem Scrollen ans Ende
+    galScroller.addEventListener('scroll', () => {
+      if (loopW <= 0) return;
+      if (galScroller.scrollLeft >= loopW * 1.5) galScroller.scrollLeft -= loopW;
+    }, { passive: true });
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(galScroller);
+    document.addEventListener('visibilitychange', () => { visible = !document.hidden && visible; if (!document.hidden) visible = true; });
+  }
+
   /* ---------- händlersuche (Filter im DOM, ohne Backend) ---------- */
   const finder = $('#finder');
   if (finder) {

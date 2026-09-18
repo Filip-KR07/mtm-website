@@ -257,6 +257,7 @@ body.menu-open{overflow:hidden}
 .scroller{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;cursor:grab;padding-bottom:6px;-webkit-overflow-scrolling:touch}
 .scroller::-webkit-scrollbar{display:none}
 .scroller.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.scroller.is-auto{scroll-snap-type:none;scroll-behavior:auto}
 .scroller__track{display:flex;gap:16px;padding-inline:max(var(--gutter),(100% - var(--max))/2);width:max-content}
 .tile{
   flex:0 0 clamp(280px,26vw,400px);scroll-snap-align:start;background:var(--paper-2);border:1px solid var(--line-dark);
