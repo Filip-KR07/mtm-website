@@ -139,12 +139,12 @@
     };
     requestAnimationFrame(tick);
     const hold = (ms) => { userHold = performance.now() + ms; };
-    if (!isTouch) {
-      galScroller.addEventListener('pointerenter', () => { paused = true; });
-      galScroller.addEventListener('pointerleave', () => { paused = false; });
-    }
+    // Pause nur beim aktiven Ziehen – nicht beim bloßen Hover, sonst steht die Galerie, sobald man sie ansieht
+    galScroller.addEventListener('pointerdown', () => { paused = true; });
+    addEventListener('pointerup', () => { paused = false; });
+    addEventListener('pointercancel', () => { paused = false; });
     galScroller.addEventListener('touchstart', () => hold(4000), { passive: true });
-    galScroller.addEventListener('wheel', () => hold(3000), { passive: true });
+    galScroller.addEventListener('wheel', (e) => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(3000); }, { passive: true });
     galScroller.addEventListener('focusin', () => { paused = true; });
     galScroller.addEventListener('focusout', () => { paused = false; });
     $$('[data-scroll]').forEach((b) => b.addEventListener('click', () => hold(3000)));
@@ -154,7 +154,6 @@
       if (galScroller.scrollLeft >= loopW * 1.5) galScroller.scrollLeft -= loopW;
     }, { passive: true });
     if ('IntersectionObserver' in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(galScroller);
-    document.addEventListener('visibilitychange', () => { visible = !document.hidden && visible; if (!document.hidden) visible = true; });
   }
 
   /* ---------- händlersuche (Filter im DOM, ohne Backend) ---------- */
