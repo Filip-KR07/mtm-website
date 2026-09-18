@@ -428,6 +428,7 @@ body.menu-open{overflow:hidden}
 .topbar{position:relative;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);border-bottom:1px solid var(--line);max-height:44px;overflow:hidden;transition:max-height .4s var(--ease-out),opacity .3s var(--ease-out)}
 .nav.is-scrolled .topbar{max-height:0;opacity:0;border-color:transparent}
 .topbar__inner{width:min(100% - 2*var(--gutter),var(--max));margin-inline:auto;height:44px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.topbar__links{margin-right:auto}
 .topbar__contact,.topbar__links,.topbar__side,.topbar__lang{display:flex;align-items:center;gap:22px}
 .topbar__contact a{display:inline-flex;align-items:center;gap:8px;letter-spacing:.06em;text-transform:none;font-size:12.5px;color:var(--ink)}
 .topbar__contact svg{width:14px;height:14px;fill:currentColor;opacity:.7}
@@ -442,7 +443,8 @@ body.menu-open{overflow:hidden}
   .topbar__links a:hover,.topbar__lang a:hover{color:var(--ink)}
   .social--top .social__list a:hover{background:transparent;color:var(--ink)}
 }
-@media (max-width:1100px){.topbar__links{display:none}}
+@media (max-width:1100px){.topbar__links{gap:16px}}
+@media (max-width:640px){.topbar__links{gap:12px;font-size:10.5px}.topbar__links a:nth-child(3){display:none}.topbar__side{gap:10px}.social--top .social__list a{width:30px;height:30px}.topbar__lang{margin-left:0}.topbar__lang > *{min-width:30px;height:26px;padding:0 4px}}
 @media (max-width:640px){
   .topbar__contact a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .topbar__contact a{width:34px;height:34px;justify-content:center;border:1px solid var(--line)}
