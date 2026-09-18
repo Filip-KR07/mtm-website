@@ -38,6 +38,8 @@
   const slides = $$('[data-slide]', hero);
   const dots = $$('.hero__dots button', hero);
   const DUR = 7000;
+  // Ken Burns auch beim ersten Slide: Startzustand (scale 1.08) einmal erzwingen, dann aktivieren → Transition läuft
+  if (!reduced && slides[0]) { slides[0].classList.remove('is-active'); void hero.offsetWidth; slides[0].classList.add('is-active'); }
   let idx = 0, timer = null;
   const animateIn = (slide) => {
     if (!window.gsap || reduced) { $$('[data-hero]', slide).forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
