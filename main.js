@@ -60,10 +60,6 @@
     if (e.key === 'ArrowRight') show(idx + 1);
     if (e.key === 'ArrowLeft') show(idx - 1);
   });
-  if (!isTouch) {
-    hero.addEventListener('pointerenter', () => { hero.classList.add('is-paused'); clearTimeout(timer); });
-    hero.addEventListener('pointerleave', () => { hero.classList.remove('is-paused'); schedule(); });
-  }
   // Touch: Wischen
   let sx = 0;
   hero.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
